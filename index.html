@@ -1,0 +1,1323 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Git (survival kit) | Antoine Froger</title>
+
+        <link rel="stylesheet" href="css/custom.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="theme-font-montserrat theme-color-sand-blue" style="width: 100%; height: 100%;">
+            <div class="reveal">
+                <div class="slides">
+                    <section>
+                        <div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 980px; height: 980px; left: -10px; top: -140px;">
+                            <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(39, 97, 190)" data-shape-stretch="false" style="z-index: 0; opacity: 0.85;">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 980 980">
+                                    <ellipse rx="490" ry="490" cx="490" cy="490" class="shape-element" fill="rgb(39, 97, 190)"></ellipse>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="float-animation">
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 199px; left: 721px; top: 540px;">
+                                <div class="sl-block-content" style="z-index: 12; color: rgb(0, 0, 0); font-size: 93%;" dir="ui">
+                                    <p>
+                                        <strong>Workshop</strong>
+                                    </p>
+                                    <p>
+                                        <span style="font-size:0.9em">Antoine Froger</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 202px; height: 202px; left: 719px; top: 478px;">
+                                <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 11;">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 202 202">
+                                        <ellipse rx="101" ry="101" cx="101" cy="101" class="shape-element" fill="rgb(255, 255, 255)"></ellipse>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 970px; left: -6px; top: 214px;">
+                            <div class="sl-block-content" style="z-index: 13; color: rgb(255, 255, 255); font-size: 121%; line-height: 0.715;" dir="ui" data-has-line-height="">
+                                <h1>
+                                    <span style="font-size:2.5em">Git</span>
+                                </h1>
+                                <p>&nbsp;</p>
+                                <p>
+                                    <span style="font-size:1.6em">(survival kit)</span>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="stack">
+                        <section class="has-dark-background" data-background-color="#3e72c5">
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 299px; height: auto;">
+                                <div class="sl-block-content" style="text-align: left; font-size: 180%; z-index: 11; color: rgb(68, 68, 68); line-height: 0.897;" dir="ui" data-has-line-height="">
+                                    <h1 style="text-align:center">Workflow</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 980px; height: 980px; left: -10px; top: -140px;">
+                                <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 0;">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 980 980">
+                                        <ellipse rx="490" ry="490" cx="490" cy="490" class="shape-element" fill="rgb(255, 255, 255)"></ellipse>
+                                    </svg>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 905.625px; height: 322px; left: 36px; top: 366px;">
+                                <div class="sl-block-content fragment" style="z-index: 10;" data-fragment-index="3">
+                                    <img data-natural-width="900" data-natural-height="320" style="" data-src="images/trees.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 404px; left: 50px; top: 137px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 11; border-width: 1px; padding: 5px; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="text-align: center;">The Working directory</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 404px; left: 50px; top: 208px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 12; padding: 5px; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="text-align: center;">The Index (or stage)</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 404px; left: 50px; top: 284px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 13; padding: 5px; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="2">
+                                    <pre style="text-align: center;">The HEAD</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 427px; left: 480px; top: 140px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" dir="ui" data-fragment-index="0">
+                                    <p style="text-align:left">
+                                        <span style="font-size:27px; line-height:35.1px">Sandbox</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 16;">
+                                    <h1>The 3 trees</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 427px; left: 480px; top: 212px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 17;" dir="ui" data-fragment-index="1">
+                                    <p style="text-align:left">
+                                        <span style="font-size:0.9em">Proposed next commit snapshot</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 427px; left: 480px; top: 288px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 18;" dir="ui" data-fragment-index="2">
+                                    <p style="text-align:left">
+                                        <span style="font-size:0.9em">Last commit snapshot</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 643.443px; height: 471px; left: 159px; top: 159px;">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <img data-natural-width="500" data-natural-height="366" style="" data-src="images/1.new.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;">
+                                    <h1>New file</h1>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="image" style="width: 643px; height: 470.676px; left: 159px; top: 159px;">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <img data-natural-width="500" data-natural-height="366" style="" data-src="images/2.add.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;">
+                                    <h1>Add</h1>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="image" style="width: 643px; height: 470.676px; left: 159px; top: 159px;">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <img data-natural-width="500" data-natural-height="366" style="" data-src="images/3.commit.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;">
+                                    <h1>Commit</h1>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <section class="stack">
+                        <section class="has-light-background" data-background-color="#6ac343">
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 229px; height: auto;">
+                                <div class="sl-block-content" style="text-align: left; font-size: 180%; z-index: 10; color: rgb(68, 68, 68); line-height: 0.897;" dir="ui" data-has-line-height="">
+                                    <h1 style="text-align:center">Clean</h1>
+                                    <h1 style="text-align:center">branches</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 980px; height: 980px; left: -10px; top: -140px;">
+                                <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 0;">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 980 980">
+                                        <ellipse rx="490" ry="490" cx="490" cy="490" class="shape-element" fill="rgb(255, 255, 255)"></ellipse>
+                                    </svg>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>Display branches</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 137px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">Local branches</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 221px;">
+                                <div class="sl-block-content fragment" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git branch</pre>
+                                    <pre style="color:rgb(17, 17, 17)">* master</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  rebase-i-demo</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  untracked-demo</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 77px; top: 376px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">All branches (local and distant)</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 460px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="font-size:1.0em; color:#FF8C00">$ git branch -a</pre>
+                                    <pre style="color:rgb(17, 17, 17)">* master</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  rebase-i-demo</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  untracked-demo</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  remotes/origin/HEAD -&gt; origin/master</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  remotes/origin/master</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>Oups...</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 157px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h2>
+                                        <span style="font-size:0.7em">Wrong name ?</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 251px;">
+                                <div class="sl-block-content fragment" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#A9A9A9"">// Rename branch</pre>
+                                    <pre style="color:#FF8C00"">$ git branch -m branch-old-name branch-new-name</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 376px;">
+                                <div class="sl-block-content fragment" style="z-index: 14; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#A9A9A9"">// Rename branch</pre>
+                                    <pre style="color:#FF8C00"">$ git branch -m branch-new-name</pre>
+                                    <pre style="color:#FF8C00"">$ git branch -a</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  master</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  rebase-i-demo</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  untracked-demo</pre>
+                                    <pre style="color:rgb(17, 17, 17)">* branch-new-name</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>Delete branch</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 77px; top: 177px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h2>
+                                        <span style="font-size:0.7em">Don't need this branch anymore</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 18px; top: 308px;">
+                                <div class="sl-block-content" style="z-index: 12; text-align: left; font-size: 80%; color: rgb(17, 17, 17); background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git branch -d obsolete-branch</pre>
+                                    <pre style="color:#A9A9A9">// equivalent to git branch --delete</pre>
+                                    <pre style="color:rgb(17, 17, 17)">error: The branch 'obsolete-branch' is not fully merged.</pre>
+                                    <pre style="color:rgb(17, 17, 17)">If you are sure you want to delete it, run 'git branch -D</pre>
+                                    <pre style="color:rgb(17, 17, 17)">obsolete-branch'</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 17px; top: 523px;">
+                                <div class="sl-block-content fragment" style="z-index: 14; text-align: left; font-size: 80%; color: rgb(17, 17, 17); background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git branch -D obsolete-branch</pre>
+                                    <pre style="color:#A9A9A9">// Shortcut for --delete --force</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Deleted branch obsolete-branch (was 12345)</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>Usefull options</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 168px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 11;" data-fragment-index="0">
+                                    <p>
+                                        <span style="font-size:0.7em">Displays some information about the last commit</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 923px; left: 23px; top: 217px;">
+                                <div class="sl-block-content fragment" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git branch -vv</pre>
+                                    <pre style="color:rgb(17, 17, 17)">* master        a3d3414 [origin/master] Add homepage</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  rebase-i-demo a15dc16 Revert "Create documentation"</pre>
+                                    <pre style="color:#808080">...</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">-vv</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 395px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1">
+                                    <p>
+                                        <span style="font-size:0.7em">Only displays unmerged branches</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 923px; left: 22px; top: 442px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git branch --no-merged</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  rebase-i-demo</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 331px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">--no-merged</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 558px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 17;" data-fragment-index="2">
+                                    <p>
+                                        <span style="font-size:0.7em">Only displays merged branches</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 923px; left: 22px; top: 607px;">
+                                <div class="sl-block-content fragment" style="z-index: 18; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="2">
+                                    <pre style="color:#FF8C00">$ git branch --merged</pre>
+                                    <pre style="color:rgb(17, 17, 17)">* master</pre>
+                                    <pre style="color:rgb(17, 17, 17)">  untracked-demo</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 494px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 20;" data-fragment-index="2">
+                                    <h2>
+                                        <span style="font-size:0.7em">--merged</span>
+                                    </h2>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <section class="stack">
+                        <section class="has-light-background" data-background-color="#f88c1a">
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 229px; height: auto;">
+                                <div class="sl-block-content" style="text-align: left; font-size: 180%; z-index: 10; color: rgb(68, 68, 68); line-height: 0.897;" dir="ui" data-has-line-height="">
+                                    <h1 style="text-align:center">Atomic commits</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 980px; height: 980px; left: -10px; top: -140px;">
+                                <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 0;">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 980 980">
+                                        <ellipse rx="490" ry="490" cx="490" cy="490" class="shape-element" fill="rgb(255, 255, 255)"></ellipse>
+                                    </svg>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 187px; height: auto;">
+                                <div class="sl-block-content" dir="ui" data-has-line-height="" style="line-height: 0.559; z-index: 10;">
+                                    <h1>
+                                        <span style="font-size:1.0em">one commit </span>
+                                    </h1>
+                                    <h1>
+                                        <span style="font-size:1.0em">=</span>
+                                    </h1>
+                                    <h1>
+                                        <span style="font-size:1.0em">one responsability</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 401px;">
+                                <div class="sl-block-content fragment" style="z-index: 11;" data-fragment-index="0">
+                                    <p style="color:rgb(17, 17, 17)">
+                                        <span style="font-size:1.2em">easier to understand</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 455px;">
+                                <div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="1">
+                                    <p style="color:rgb(17, 17, 17)">
+                                        <span style="font-size:1.2em">
+                                            <span style="color:rgb(17, 17, 17)">easier to review</span>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 508px;">
+                                <div class="sl-block-content fragment" style="z-index: 15;" data-fragment-index="2">
+                                    <p style="color:rgb(17, 17, 17)">
+                                        <span style="font-size:1.2em">easier to revert</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>
+                                        <span>Detailed status</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto; color: rgb(68, 68, 68)">
+                                <div class="sl-block-content" style="z-index: 12;">
+                                    <h2>
+                                        <span style="font-size:0.7em">Show untracked files</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 923px; left: 22px; top: 191px;">
+                                <div class="sl-block-content fragment" style="z-index: 13; text-align: left; font-size: 70%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git status</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Untracked files:</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    README.md</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    vendor/</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 923px; left: 22px; top: 378px;">
+                                <div class="sl-block-content fragment" style="z-index: 14; text-align: left; font-size: 70%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git status -u</pre>
+                                    <pre style="color:#A9A9A9">$ // git config --global status.showUntrackedFiles all</pre>
+                                    <pre style="color:#A9A9A9">$ // git status</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Untracked files:</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    README.md</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    vendor/autoload.php</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    vendor/composer/ClassLoader.php</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    vendor/composer/LICENSE</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>
+                                        <span>Show your&nbsp;changes</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 250px;">
+                                <div class="sl-block-content fragment" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git diff</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 167px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">Unstaged changes</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 430px;">
+                                <div class="sl-block-content fragment" style="z-index: 14; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git diff --staged</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 348px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 15;" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">Staged changes</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 631px;">
+                                <div class="sl-block-content fragment" style="z-index: 16; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="2">
+                                    <pre style="color:#FF8C00">$ git diff -w</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 548px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 17;" data-fragment-index="2">
+                                    <h2>
+                                        <span style="font-size:0.7em">Without whitespaces</span>
+                                    </h2>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 347px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 10;" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">All&nbsp;files</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 425px;">
+                                <div class="sl-block-content fragment" style="z-index: 11; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git add .</pre>
+                                    <pre style="color:#A9A9A9">$ // git add --all</pre>
+                                    <pre style="color:rgb(17, 17, 17)">$ git status</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Changes to be committed:</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    new file: README.md</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    new file: composer.json</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 851px; left: 55px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12; text-align: center;">
+                                    <h1>
+                                        <span>Add files to the stage</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 100px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">A specific file</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 174px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git add README.md</pre>
+                                    <pre style="color:#FF8C00">$ git status</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Changes to be committed:</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">    new file: README.md</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h2>
+                                        <span style="font-size:0.7em">Only add a fragment</span>
+                                    </h2>
+                                    <p>
+                                        <span style="font-size:0.7em">Because you want atomic commits and not catch-all commits</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 23px; top: 254px;">
+                                <div class="sl-block-content" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git add -p README.md</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)"># Git (for beginners)</pre>
+                                    <pre style="color:#00FF00">+ This repository is dedicated to the git workshop</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:#0000CD">Stage this hunk [y,n,q,a,d,/,s,e,?]? y</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:#00FF00">## Commits</pre>
+                                    <pre style="color:#00FF00">## Pushes</pre>
+                                    <pre style="color:#00FF00">+## Branches</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:#0000CD">Stage this hunk [y,n,q,a,d,/,s,e,?]? y</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 851px; left: 55px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 13; text-align: center;">
+                                    <h1>
+                                        <span>Add files to the stage</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Unstage files</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto; color: rgb(68, 68, 68)">
+                                <div class="sl-block-content fragment" style="z-index: 11;" dir="ui" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">One file</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 185px;">
+                                <div class="sl-block-content fragment" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git reset README.md</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Unstaged changes after reset</pre>
+                                    <pre style="color:rgb(17, 17, 17)">M    README.md</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 269px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">All the files</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 347px;">
+                                <div class="sl-block-content fragment" style="z-index: 14; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git reset</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Unstaged changes after reset</pre>
+                                    <pre style="color:rgb(17, 17, 17)">M    README.md</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 431px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="2">
+                                    <h2>
+                                        <span style="font-size:0.7em">Only a section of a&nbsp;file</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 509px;">
+                                <div class="sl-block-content fragment" style="z-index: 17; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="2">
+                                    <pre style="color:#FF8C00">$ git reset -p README.md</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">## Pushes</pre>
+                                    <pre style="color:#00FF00">+## Branches</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:#0000CD">Unstage this hunk [y,n,q,a,d,/,s,e,?]?</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Keep your changes at hand</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 204px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h2>
+                                        <span style="font-size:0.7em">git stash is your friend</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 305px;">
+                                <div class="sl-block-content" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git stash save "Fix a typo"</pre>
+                                    <pre style="color:#A9A9A9">$ //git stash save -u "Fix a typo" (also stash untracked files)</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Unstaged changes after reset</pre>
+                                    <pre style="color:rgb(17, 17, 17)">M    README.md<br />&nbsp;</pre>
+                                    <pre style="color:#FF8C00">$ git stash list</pre>
+                                    <pre style="color:rgb(17, 17, 17)">stash@{0}: On master: Fix a typo</pre>
+                                    <pre style="color:rgb(17, 17, 17)">stash@{1}: On my-branch: Add italian translations</pre>
+                                    <pre style="color:rgb(17, 17, 17)">stash@{2}: On master: Fix bug #123<br />&nbsp;</pre>
+                                    <pre style="color:#FF8C00">$ git stash show [stash@{0}]</pre>
+                                    <pre style="color:rgb(17, 17, 17)"> README.md | 5 +++--</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>
+                                        <span>Get your changes back</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 204px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 12;" dir="ui" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">Apply a stash</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 285px;">
+                                <div class="sl-block-content fragment" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git stash apply stash@{1}</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Changes not staged for commit:</pre>
+                                    <pre style="color:rgb(17, 17, 17)">     modified:  README.md</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 441px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">Apply and drop&nbsp;a stash</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 520px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git stash pop stash@{1}</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Changes not staged for commit:</pre>
+                                    <pre style="color:rgb(17, 17, 17)">     modified:  README.md</pre>
+                                    <pre style="color:#A9A9A9">...</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>
+                                        <span>And the</span>
+                                    </h1>
+                                    <h1>
+                                        <span>untracked files</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 300px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;" dir="ui">
+                                    <p>
+                                        <span style="font-size:1.0em">There is a shortcut for that</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 395px;">
+                                <div class="sl-block-content" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git stash -u</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Saved working directory and index state WIP on branch-name:<br />8ad48aa My commit comment</pre>
+                                    <pre style="color:rgb(17, 17, 17)">HEAD is now at 8ad48aa My commit comment</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>Remove untracked files or directory</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 240px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 11;" dir="ui" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">Untracked files</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 314px;">
+                                <div class="sl-block-content fragment" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git clean</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 349px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 13;" dir="ui" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">Untracked directories</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 423px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git clean -d</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 451px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 17;" dir="ui" data-fragment-index="2">
+                                    <h2>
+                                        <span style="font-size:0.7em">Not sure of what you're doing ?</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 21px; top: 525px;">
+                                <div class="sl-block-content fragment" style="z-index: 18; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="2">
+                                    <pre style="color:#FF8C00">$ git clean -n</pre>
+                                    <pre style="color:#A9A9A9">// equivalent to --dry-run</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 580px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" dir="ui" data-fragment-index="3">
+                                    <h2>
+                                        <span style="font-size:0.7em">Force</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 654px;">
+                                <div class="sl-block-content fragment" style="z-index: 19; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="3">
+                                    <pre style="color:#FF8C00">$ git clean -f</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>
+                                        <span>Finally, commit your changes</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 234px;">
+                                <div class="sl-block-content" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git commit -m "An intelligible message" README.md</pre>
+                                    <pre style="color:rgb(17, 17, 17)">[master 12345] An intelligible message<br />  1 file changed, 1 insertion(+), 1 deletion(-)</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 423px;">
+                                <div class="sl-block-content fragment" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git add CHANGELOG-1.0.md</pre>
+                                    <pre style="color:#FF8C00">$ git commit --amend --no-edit</pre>
+                                    <pre style="color:rgb(17, 17, 17)">[master 67890] An intelligible message<br />  2 files changed, 2 insertion(+), 1 deletion(-)</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 344px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" dir="ui" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">Forgot a file ?</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 652px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git commit --amend -m "A new message without typos"</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 573px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 16;" dir="ui" data-fragment-index="1">
+                                    <h2>
+                                        <span style="font-size:0.7em">Want to change&nbsp;the message ?</span>
+                                    </h2>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Error in a commit...</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 304px;">
+                                <div class="sl-block-content" style="z-index: 11; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git reset HEAD~1</pre>
+                                    <pre style="color:#A9A9A9">// 1 is the number of commit to cancel</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Unstaged changes after reset:</pre>
+                                    <pre style="color:rgb(17, 17, 17)">M    my-updated-file.md</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 164px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;" dir="ui">
+                                    <h2>
+                                        <span style="font-size:0.7em">Cancel a commit</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 226px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 14;" dir="ui">
+                                    <p>
+                                        <span style="font-size:1.0em">(but do not revert the changes)</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <section class="stack">
+                        <section class="has-light-background" data-background-color="#ffc208">
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 229px; height: auto;">
+                                <div class="sl-block-content" style="text-align: left; font-size: 180%; z-index: 10; color: rgb(68, 68, 68); line-height: 0.897;" dir="ui" data-has-line-height="">
+                                    <h1 style="text-align:center">Great pushes</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 980px; height: 980px; left: -10px; top: -140px;">
+                                <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 0;">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 980 980">
+                                        <ellipse rx="490" ry="490" cx="490" cy="490" class="shape-element" fill="rgb(255, 255, 255)"></ellipse>
+                                    </svg>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Push one branch</span>
+                                    </h1>
+                                    <h1>
+                                        <span>at the same time</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 247px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;" dir="ui">
+                                    <p style="text-align:left">
+                                        Push the current branch if it's tracked and distant and local name are identicall <em>(default mode since git 2.0)</em>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 412px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;" dir="ui">
+                                    <p style="text-align:left">
+                                        Push the current branch if it's tracked (regardless of its name)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 350px;">
+                                <div class="sl-block-content" style="z-index: 14; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git config --global push.default simple </pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 21px; top: 508px;">
+                                <div class="sl-block-content" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git config --global push.default upstream </pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 577px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 16;" dir="ui" data-fragment-index="0">
+                                    <p style="text-align:left">
+                                        <em><strong>Warning</strong>: before git 2.0 default mode was matching. Push all branches having the same distant and local name</em>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>First push</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h2>
+                                        <span style="font-size:0.7em">Push and track</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 923px; left: 22px; top: 191px;">
+                                <div class="sl-block-content" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">(tracked) $ git push -u origin tracked</pre>
+                                    <pre style="color:#808080">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">To git@github.com:antfroger/git-intro.</pre>
+                                    <pre style="color:rgb(17, 17, 17)"> * [new branch]  tracked -&gt; tracked<br /><br />Branch tracked set up to track remote branch to tracked origin</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 77px; top: 404px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="0">
+                                    <h2>
+                                        <span style="font-size:0.7em">Forget to&nbsp;track ?</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 923px; left: 19px; top: 488px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">(untracked) $ git branch --set-upstream-to=origin/untracked untracked</pre>
+                                    <pre style="color:rgb(17, 17, 17)">Branch untracked set up to track remote branch to untracked origin</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Clean the history</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 217px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h2>
+                                        <span style="font-size:0.7em">git rebase -i</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 301px;">
+                                <div class="sl-block-content" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">(BUG-123) $ git rebase -i origin/BUG-123</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 137px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 14;" dir="ui">
+                                    <p style="text-align:left">Before pushing, clean the history: remove useless commit, merge two commits, reorganise commits...</p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 346px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:rgb(17, 17, 17)">pick 6e70bd9 Add description</pre>
+                                    <pre style="color:rgb(17, 17, 17)">pick 1b6d5ae Add dependency</pre>
+                                    <pre style="color:rgb(17, 17, 17)">pick d590486 Forget dependency</pre>
+                                    <pre style="color:rgb(17, 17, 17)">pick 08e6ace Fix typo</pre>
+                                    <pre style="color:rgb(17, 17, 17)">pick af15bf3 Add changelog + create .gitignore</pre>
+                                    <pre style="color:rgb(17, 17, 17)">pick f1f53a9 Create documentation</pre>
+                                    <pre style="color:#808080">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)"># p, pick = use commit</pre>
+                                    <pre style="color:rgb(17, 17, 17)"># r, reword = use commit, but edit the commit message</pre>
+                                    <pre style="color:rgb(17, 17, 17)"># e, edit = se commit, but stop for amending</pre>
+                                    <pre style="color:#808080">...</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Pull correctly</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 137px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;" dir="ui">
+                                    <p style="text-align:left">By default, when you pull, git execute a <strong>merge</strong> after pulling.</p>
+                                    <p style="text-align:left">&nbsp;</p>
+                                    <p style="text-align:left">But what you want is not merging the distant branch into your current branch but get the distant changes and re-execute your changes on the up-to-date local branch 
+                                        <span style="color:rgb(68, 68, 68); text-align:left">&nbsp;= </span>
+                                        <strong>rebase</strong>.
+                                    </p>
+                                    <p style="text-align:left">&nbsp;</p>
+                                    <p style="text-align:left">Merge should only be used to integrate your changes into a parent branch.</p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 22px; top: 591px;">
+                                <div class="sl-block-content" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git config --global pull.rebase preserve</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Merge or rebase ?</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 127px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11; text-align: center;" dir="ui">
+                                    <p>What's the difference ?</p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 404px; left: 278px; top: 204px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 12; border-width: 1px; padding: 5px; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="text-align:center">Git merge</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 45px; top: 279px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 14; text-align: center;" dir="ui" data-fragment-index="0">
+                                    <p>
+                                        <span style="color:rgb(78, 68, 60); text-align:start">Join two or more development histories together</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 896px; left: 45px; top: 340px;">
+                                <div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="1">
+                                    <blockquote>
+                                        <p>
+                                            <span style="color:rgba(0, 0, 0, 0.8); text-align:start">A </span>
+                                            <em>git merge </em>
+                                            <span style="color:rgba(0, 0, 0, 0.8); text-align:start">should only be used for </span>
+                                            <strong>incorporating the entire feature set of branch into another one</strong>
+                                            <span style="color:rgba(0, 0, 0, 0.8); text-align:start">, in order to preserve a useful, semantically correct history graph. Such a clean graph has significant added value.</span>
+                                        </p>
+                                        <p style="text-align:right">
+                                            <span style="color:rgba(0, 0, 0, 0.8); text-align:start">Christophe Porteneuve</span>
+                                        </p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 404px; left: 278px; top: 574px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 13; border-width: 1px; padding: 5px; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="2">
+                                    <pre style="text-align:center">Git rebase</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 45px; top: 649px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content fragment" style="z-index: 18; text-align: center;" dir="ui" data-fragment-index="2">
+                                    <p>
+                                        <span style="color:rgb(78, 68, 60); text-align:start">Reapply commits on top of another base tip</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>
+                                        <span>Example</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="image" style="width: 796.507px; height: 456px; left: 82px; top: 219px;">
+                                <div class="sl-block-content" style="z-index: 12;">
+                                    <img data-natural-width="800" data-natural-height="458" style="" data-src="images/1.orginal-situation.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 127px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 13; text-align: center;" dir="ui">
+                                    <p>Initial situation</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="image" style="width: 682.09px; height: 457px; left: 142px; top: 180px;">
+                                <div class="sl-block-content" style="z-index: 12;">
+                                    <img data-natural-width="800" data-natural-height="536" style="" data-src="images/2.merge.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 77px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 13; text-align: center;" dir="ui">
+                                    <p>
+                                        <span style="font-size:1.2em">Merge</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="image" style="width: 682px; height: 464.612px; left: 142px; top: 176px;">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <img data-natural-width="800" data-natural-height="545" style="" data-src="images/3.rebase.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 77px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12; text-align: center;" dir="ui">
+                                    <p>
+                                        <span style="font-size:1.2em">Rebase</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <section class="stack">
+                        <section class="has-dark-background" data-background-color="#674ea7">
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 229px; height: auto;">
+                                <div class="sl-block-content" style="text-align: left; font-size: 180%; z-index: 10; color: rgb(68, 68, 68); line-height: 0.897;" dir="ui" data-has-line-height="">
+                                    <h1 style="text-align:center">Others</h1>
+                                    <h1 style="text-align:center">features...</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="shape" style="width: 980px; height: 980px; left: -10px; top: -140px;">
+                                <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 0;">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 980 980">
+                                        <ellipse rx="490" ry="490" cx="490" cy="490" class="shape-element" fill="rgb(255, 255, 255)"></ellipse>
+                                    </svg>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>Logs</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 250px;">
+                                <div class="sl-block-content" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git log</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 157px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 13;" dir="ui">
+                                    <p style="text-align:left">Logs are useful to understand what was done.</p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 840px; height: 316.575px; left: 40px; top: 321px;">
+                                <div class="sl-block-content" style="z-index: 14;">
+                                    <img data-natural-width="1600" data-natural-height="603" style="" data-src="images/git-log.png"/>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>Logs</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 117px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;" dir="ui">
+                                    <p style="text-align:left">Options are available</p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 171px;">
+                                <div class="sl-block-content fragment" style="z-index: 12; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="0">
+                                    <pre style="color:#FF8C00">$ git log --stat</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 710.093px; height: 168px; left: 128px; top: 214px;">
+                                <div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0">
+                                    <img style="" data-natural-width="1454" data-natural-height="344" data-src="images/git-log-stat.png"/>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 390px;">
+                                <div class="sl-block-content fragment" style="z-index: 15; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui" data-fragment-index="1">
+                                    <pre style="color:#FF8C00">$ git log --graph</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 710px; height: 271.091px; left: 128px; top: 428.5px;">
+                                <div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="1">
+                                    <img style="" data-natural-width="1430" data-natural-height="546" data-src="images/git-log-graph.png"/>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>Logs</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 157px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;" dir="ui">
+                                    <p>
+                                        <em>And many others...</em>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 221px;">
+                                <div class="sl-block-content" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git log -p</pre>
+                                    <pre style="color:#FF8C00">$ git log -s</pre>
+                                    <pre style="color:#FF8C00">$ git log -U</pre>
+                                    <pre style="color:#FF8C00">$ git log --raw</pre>
+                                    <pre style="color:#FF8C00">$ git log --histogram</pre>
+                                    <pre style="color:#FF8C00">$ git log --shortstat</pre>
+                                    <pre style="color:#FF8C00">$ git log --summary</pre>
+                                    <pre style="color:#FF8C00">$ git log -z</pre>
+                                    <pre style="color:#FF8C00">$ git log --name-only</pre>
+                                    <pre style="color:#FF8C00">$ git log --check</pre>
+                                    <pre style="color:#808080">...</pre>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 170px; top: 630px;">
+                                <div class="sl-block-content" style="z-index: 14;">
+                                    <p>La doc de git log: 
+                                        <a href="http://git-scm.com/docs/git-log" target="_blank">git-scm.com/docs/git-log</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 10;">
+                                    <h1>Grep</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 157px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;" dir="ui">
+                                    <p>You want to search only on the tracked files ?
+                                        <br/>
+                                        <strong>git grep is for you</strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="height: auto; width: 923px; left: 19px; top: 281px;">
+                                <div class="sl-block-content" style="z-index: 13; text-align: left; font-size: 80%; background-color: rgb(255, 255, 255);" dir="ui">
+                                    <pre style="color:#FF8C00">$ git grep -a "doc"</pre>
+                                    <pre style="color:rgb(17, 17, 17)">composer.lock:                "doctrine/couchdb": "~1.0@dev",</pre>
+                                    <pre style="color:rgb(17, 17, 17)">composer.lock:                "doctrine/dbal": "~2.2",</pre>
+                                    <pre style="color:rgb(17, 17, 17)">composer.lock:                "doctrine/annotations": "~1.0",</pre>
+                                    <pre style="color:rgb(17, 17, 17)">composer.lock:                "doctrine/common": "~2.2",</pre>
+                                    <pre style="color:#808080">...</pre>
+                                    <pre style="color:rgb(17, 17, 17)">(END)</pre>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="sl-block" data-block-type="text" style="width: 800px; left: 70px; top: 10px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 11;">
+                                    <h1>And more !</h1>
+                                </div>
+                            </div>
+                            <div class="sl-block" data-block-type="text" style="width: 825px; left: 70px; top: 317px; height: auto; color: rgb(68, 68, 68);">
+                                <div class="sl-block-content" style="z-index: 12;" dir="ui">
+                                    <p>Lots of other functions exist
+                                        <br/>
+                                        <strong>Read the doc !</strong>
+                                    </p>
+                                    <p>&nbsp;</p>
+                                    <pre style="text-align: center;"><a href="https://git-scm.com/docs" target="_blank">git-scm.com/docs</a></pre>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <section>
+                        <div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 139px; height: auto;">
+                            <div class="sl-block-content" style="text-align: left; font-size: 180%; z-index: 11; color: rgb(68, 68, 68); line-height: 0.897;" dir="ui" data-has-line-height="">
+                                <h1 style="text-align:center">Thanks</h1>
+                                <p style="text-align:center">for listening to me</p>
+                            </div>
+                        </div>
+                        <div class="sl-block" data-block-type="text" style="width: 885px; left: 36px; top: 405px; height: auto;">
+                            <div class="sl-block-content" style="text-align: left; z-index: 12; color: rgb(68, 68, 68);" dir="ui">
+                                <p style="text-align:center">
+                                    <span style="font-size:1.1em">Antoine Froger
+                                        <br/>
+                                        <a href="https://twitter.com/__tooni__" target="_blank">@__tooni__</a>
+                                    </span>
+                                </p>
+                                <p style="text-align:center">&nbsp;</p>
+                                <p style="text-align:center">&nbsp;</p>
+                                <p style="text-align:center">
+                                    <span style="font-size:0.8em">Slides available on                         
+                                        <a href="http://antfroger.github.io/slides/git-survival-kit" target="_blank">antfroger.github.io/slides/git-survival-kit</a>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 980px; height: 980px; left: -10px; top: -140px;">
+                            <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 0;">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="xMidYMid" viewBox="0 0 980 980">
+                                    <ellipse rx="490" ry="490" cx="490" cy="490" class="shape-element" fill="rgb(255, 255, 255)"></ellipse>
+                                </svg>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+
+        <script>
+            Reveal.initialize({
+                history: true,
+                transition: 'fade',
+            });
+        </script>
+    </body>
+</html>
